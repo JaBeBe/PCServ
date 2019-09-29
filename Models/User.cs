@@ -17,13 +17,15 @@ namespace PCServ.Models
         public string Password { get => password; set => password = value; }
         public string Email { get => email; set => email = value; }
 
-        private User(){}
+        private User() { }
 
-        public User(string name, string login, string passw, string mail){
-            this.Name= name;
-            this.Login=login;
-            this.Password=passw;
-            this.Email=mail;
+        public User(string name, string login, string passw, string mail)
+        {
+            // zaimplemetować autoinkrementowany ID z bazy danych 
+            this.Name = name;
+            this.Login = login;
+            this.Password = passw;
+            this.Email = mail;
         }
 
     }

@@ -7,34 +7,34 @@ namespace PCServ.Controllers.DataControllers
         public void UpgratesNotification(Notification notification, string message)
         {
             notification.Message = message;
-            notification.UpgradeNote = new DateTime.Now();
+            notification.UpgradeTime = DateTime.Now;
             SaveUpgrates(notification);
         }
         public void UpgratesNotification(Notification notification, string message, string pcDescription)
         {
             notification.Message = message;
             notification.PcDescription = pcDescription;
-            notification.UpgradeNote = new DateTime.Now();
+            notification.UpgradeTime = DateTime.Now;
             SaveUpgrates(notification);
 
         }
-        public void UpgratesNotification(Notification notification, string pcDescription)
-        {
-            notification.PcDescription = pcDescription;
-            notification.UpgradeNote = new DateTime.Now();
-            SaveUpgrates(notification);
-        }
+        // public void UpgratesNotification(Notification notification, string pcDescription)
+        // {
+        //     notification.PcDescription = pcDescription;
+        //     notification.UpgradeTime = DateTime.Now;
+        //     SaveUpgrates(notification);
+        // }
 
         public void IsReadChange(Notification notification)
         {
             notification.IsRead = true;
-            notification.ReadTime = new DateTime.Now();
+            notification.ReadTime = DateTime.Now;
             SaveUpgrates(notification);
         }
         public void IsCloseChange(Notification notification)
         {
             notification.IsEnd = true;
-            notification.CloseNotification = new DateTime.Now();
+            notification.UpgradeTime = DateTime.Now;
             SaveUpgrates(notification);
         }
 

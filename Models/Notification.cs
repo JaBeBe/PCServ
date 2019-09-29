@@ -8,10 +8,10 @@ namespace PCServ.Models
         string message;
         User user;
         string pcDescription;
-        DateTime addNotification;
+        DateTime createTime;
         DateTime readTime;
-        DateTime upgradeNote;
-        DateTime closeNotification;
+        DateTime upgradeTime;
+        DateTime closeTime;
         Boolean isRead;
         Boolean isEnd;
 
@@ -19,10 +19,10 @@ namespace PCServ.Models
         public string Message { get => message; set => message = value; }
         public User User { get => user; set => user = value; }
         public string PcDescription { get => pcDescription; set => pcDescription = value; }
-        public DateTime AddNotification { get => addNotification; set => addNotification = value; }
+        public DateTime CreateTime { get => createTime; set => createTime = value; }
         public DateTime ReadTime { get => readTime; set => readTime = value; }
-        public DateTime UpgradeNote { get => upgradeNote; set => upgradeNote = value; }
-        public DateTime CloseNotification { get => closeNotification; set => closeNotification = value; }
+        public DateTime UpgradeTime { get => upgradeTime; set => upgradeTime = value; }
+        public DateTime CloseTime { get => closeTime; set => closeTime = value; }
         public bool IsRead { get => isRead; set => isRead = value; }
         public bool IsEnd { get => isEnd; set => isEnd = value; }
 
@@ -36,7 +36,7 @@ namespace PCServ.Models
             this.User = user;
             this.Message = message;
             this.PcDescription = pcDescription;
-            AddNotification = new DateTime.Now();
+            CreateTime = DateTime.Now;
             this.IsRead = false;
             this.IsEnd = false;
         }

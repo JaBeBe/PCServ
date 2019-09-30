@@ -4,13 +4,8 @@ namespace PCServ.Controllers.DataControllers
 {
     public class NotificationController
     {
-        public void UpgratesNotification(Notification notification, string message)
-        {
-            notification.Message = message;
-            notification.UpgradeTime = DateTime.Now;
-            SaveUpgrates(notification);
-        }
-        public void UpgratesNotification(Notification notification, string message, string pcDescription)
+
+        public void UpgratesNotification(Notification notification, string message = notification.Message, string pcDescription = Notification.PcDescription)
         {
             notification.Message = message;
             notification.PcDescription = pcDescription;
@@ -18,12 +13,6 @@ namespace PCServ.Controllers.DataControllers
             SaveUpgrates(notification);
 
         }
-        // public void UpgratesNotification(Notification notification, string pcDescription)
-        // {
-        //     notification.PcDescription = pcDescription;
-        //     notification.UpgradeTime = DateTime.Now;
-        //     SaveUpgrates(notification);
-        // }
 
         public void IsReadChange(Notification notification)
         {
@@ -34,7 +23,7 @@ namespace PCServ.Controllers.DataControllers
         public void IsCloseChange(Notification notification)
         {
             notification.IsEnd = true;
-            notification.UpgradeTime = DateTime.Now;
+            notification.CloseTime = DateTime.Now;
             SaveUpgrates(notification);
         }
 

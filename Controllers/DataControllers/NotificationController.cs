@@ -5,10 +5,8 @@ namespace PCServ.Controllers.DataControllers
     public class NotificationController
     {
 
-        public void UpgratesNotification(Notification notification, string message = notification.Message, string pcDescription = Notification.PcDescription)
+        public void UpgratesNotification(Notification notification)
         {
-            notification.Message = message;
-            notification.PcDescription = pcDescription;
             notification.UpgradeTime = DateTime.Now;
             SaveUpgrates(notification);
 

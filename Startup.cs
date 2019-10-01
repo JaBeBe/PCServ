@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PCServ.Models.Contexts;
 
 namespace PCServ
 {
@@ -26,6 +28,10 @@ namespace PCServ
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
+            });
+
+            services.AddDbContext<AuthContext>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("PcServDatabase"));
             });
         }
 

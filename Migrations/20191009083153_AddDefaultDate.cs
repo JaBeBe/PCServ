@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PCServ.Migrations
 {
-    public partial class AddCreationDateFieldToUser : Migration
+    public partial class AddDefaultDate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<DateTime>(
-                name: "CreationDate",
+                name: "UpdateDate",
                 table: "Users",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
@@ -17,7 +17,7 @@ namespace PCServ.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CreationDate",
+                name: "UpdateDate",
                 table: "Users");
         }
     }

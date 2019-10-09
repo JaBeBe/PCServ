@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PCServ.Controllers
@@ -15,6 +16,17 @@ namespace PCServ.Controllers
         };
 
         [HttpGet("[action]")]
+        public IEnumerable<WeatherForecast> WeatherForecastsLite()
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 3).Select(index => new WeatherForecast
+            {
+                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            });
+        }
+        [HttpGet("[action]"),Authorize]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
             var rng = new Random();

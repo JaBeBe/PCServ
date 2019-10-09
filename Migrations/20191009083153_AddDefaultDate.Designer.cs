@@ -10,8 +10,8 @@ using PCServ.Models.Contexts;
 namespace PCServ.Migrations
 {
     [DbContext(typeof(AuthContext))]
-    [Migration("20191001132421_AddCreationDateFieldToUser")]
-    partial class AddCreationDateFieldToUser
+    [Migration("20191009083153_AddDefaultDate")]
+    partial class AddDefaultDate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,8 @@ namespace PCServ.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationDate");
+                    b.Property<DateTime>("CreationDate")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Email");
 
@@ -38,6 +39,9 @@ namespace PCServ.Migrations
                     b.Property<string>("Login");
 
                     b.Property<string>("Password");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 

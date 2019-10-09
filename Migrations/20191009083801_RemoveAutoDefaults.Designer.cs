@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PCServ.Models.Contexts;
 
 namespace PCServ.Migrations
 {
     [DbContext(typeof(AuthContext))]
-    partial class AuthContextModelSnapshot : ModelSnapshot
+    [Migration("20191009083801_RemoveAutoDefaults")]
+    partial class RemoveAutoDefaults
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,8 +38,6 @@ namespace PCServ.Migrations
                     b.Property<string>("Login");
 
                     b.Property<string>("Password");
-
-                    b.Property<string>("Role");
 
                     b.Property<DateTime>("UpdateDate");
 

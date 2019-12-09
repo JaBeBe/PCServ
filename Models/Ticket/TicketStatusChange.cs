@@ -8,6 +8,7 @@ namespace PCServ.Models.Ticket
     public class TicketStatusChange
     {
         public int Id { get; set; }
+        public string Comment {get; set;}
         public DateTime UpdateTime { get; set; }
         public StatusEnum Status{ get; set; }
     }

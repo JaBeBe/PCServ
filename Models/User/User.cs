@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace PCServ.Models.User
 {
     public class User

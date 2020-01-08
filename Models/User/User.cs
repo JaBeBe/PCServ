@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PCServ.Models.User
 {
@@ -11,5 +12,8 @@ namespace PCServ.Models.User
         public string Password { get; set; }
         public UserRoleEnum Role { get; set; }
         public DateTime CreateTime { get; set; }
+
+        [NotMapped]
+        public string Token { get; set; }
     }
 }

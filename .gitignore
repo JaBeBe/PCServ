@@ -3,6 +3,8 @@
 
 # Sqlite database
 App.db
+App.db-shm
+App.db-wal
 
 # User-specific files
 *.suo

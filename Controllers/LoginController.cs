@@ -23,9 +23,9 @@ namespace PCServ.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Authenticate([FromBody]LoginForm loginForm)
+        public async Task<IActionResult> Authenticate([FromBody]LoginForm loginForm)
         {
-            var user = _userService.LoginUser(loginForm);
+            var user = await _userService.LoginUser(loginForm);
 
             if (user == null)
                 return BadRequest(new { message = "Bad login credentials" });

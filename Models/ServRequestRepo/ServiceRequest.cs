@@ -15,6 +15,21 @@ namespace PCServ.Models.ServRequestRepo
         public string Description { get; set; }
         public Product Stuff { get; set; }
         public User.User Client { get; set; }
-        //public RequestHistory History { get; set; }
+        public List<IEnumerable<RequestHistory>> History;
+
+        private ServiceRequest()
+        {
+
+        }
+        public ServiceRequest(string title, string description, Product product, User.User client)
+        {
+            Title = title;
+            Description = description;
+            Stuff = product;
+            Client = client;
+            CreateAt = DateTime.Now;
+            History = new List<IEnumerable<RequestHistory>>();
+            
+        }
     }
 }

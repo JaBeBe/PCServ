@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PCServ.Models.ServRequestRepo;
 using PCServ.Models.Ticket;
 using PCServ.Models.User;
 using System;
@@ -12,6 +13,7 @@ namespace PCServ.Context
     {
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<ServiceRequest> ServReqs { get; set; }
 
         public AppDbContext( DbContextOptions options): base(options)
         {

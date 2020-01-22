@@ -8,6 +8,7 @@ namespace PCServ.Models.User
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string EMail { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public UserRoleEnum Role { get; set; }
@@ -21,11 +22,12 @@ namespace PCServ.Models.User
 
         }
 
-        public User(string firstName, string lastName, string  login, string password)
+        public User(string firstName, string lastName, string  login, string password, string mail)
         {
             FirstName = firstName;
             LastName = lastName;
             Login = login;
+            EMail = mail;
             Password = password;
             Role = UserRoleEnum.Client;
             CreateTime = DateTime.Now;

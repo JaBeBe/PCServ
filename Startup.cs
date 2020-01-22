@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using PCServ.Context;
 using PCServ.Helpers;
+using PCServ.Models.ServRequestRepo;
+using PCServ.Models.User;
 using PCServ.Services;
 
 namespace PCServ
@@ -60,6 +62,8 @@ namespace PCServ
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IServiceRequestRepository, ServiceRequestRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

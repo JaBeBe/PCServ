@@ -10,9 +10,10 @@ namespace PCServ.Models.ServRequestRepo
         Task<ServiceRequest> GetServiceRequestAsync(int id);
         Task<ServiceRequest> GetServiceRequestAsync(string title);
         Task<ServiceRequest> GetServiceRequestAsync(User.User client);
+        Task<IEnumerable<ServiceRequest>> BrowseRequest(string name = "");
 
-        Task<ServiceRequest> AddServiceRequestAsync(ServiceRequest request);
-        Task<ServiceRequest> UpdateServiceRequestAsync(ServiceRequest request);
-        Task<ServiceRequest> DeleteServiceRequestAsync(ServiceRequest request);
+        Task AddServiceRequestAsync(ServiceRequest request);
+        Task UpdateServiceRequestAsync(ServiceRequest request);
+        Task DeleteServiceRequestAsync(ServiceRequest request);
     }
 }

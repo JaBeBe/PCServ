@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PCServ.DTO;
 using PCServ.Models.Login;
 using PCServ.Services;
 
@@ -30,7 +31,9 @@ namespace PCServ.Controllers
             if (user == null)
                 return BadRequest(new { message = "Bad login credentials" });
 
-            return Ok(user);
+            var userDTO = new UserDTO(user);
+
+            return Ok(userDTO);
         }
     }
 }

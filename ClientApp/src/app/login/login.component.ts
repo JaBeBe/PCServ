@@ -2,6 +2,7 @@ import { LoginServiceService } from './login-service.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LoginForm } from './login-form';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   firstSubmit = false;
-  constructor(private loginService: LoginServiceService) { }
+  constructor(private loginService: LoginServiceService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,11 @@ export class LoginComponent implements OnInit {
   formOnSumbit(form: NgForm) {
     this.firstSubmit = true;
     if (form.valid) {
-      this.loginService.authenticate(form.value);
+      this.loginService.authenticate(form.value, (success) => {
+        if (success) {
+          this.router.navigate(['dashboard']);
+        }
+      });
     }
   }
 

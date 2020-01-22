@@ -35,6 +35,7 @@
     <Folder Include="Services\" />
     <Folder Include="Helpers\" />
     <Folder Include="Models\Login\" />
+    <Folder Include="DTO\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

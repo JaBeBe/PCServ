@@ -9,13 +9,13 @@ namespace PCServ.Models.User
     public class UserRepository : IUserRepository
     {
         private readonly AppDbContext _ctx;
-
-
+        
         public UserRepository(AppDbContext context)
         {
             _ctx = context;
         }
- 
+
+        public IEnumerable<User> Users => _ctx.Users;
         public async Task<User> GetUserAsync(int id) => await Task.FromResult(_ctx.Users.SingleOrDefault(x => x.Id == id));
         public async Task<User> GetUserAsync(string Login) => await Task.FromResult(_ctx.Users.SingleOrDefault(x => x.Login == Login));
 

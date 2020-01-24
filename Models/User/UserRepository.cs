@@ -19,6 +19,11 @@ namespace PCServ.Models.User
         public async Task<User> GetUserAsync(int id) => await Task.FromResult(_ctx.Users.SingleOrDefault(x => x.Id == id));
         public async Task<User> GetUserAsync(string Login) => await Task.FromResult(_ctx.Users.SingleOrDefault(x => x.Login == Login));
 
+        public async Task<bool> Contains(User user)
+        {
+            return await Task.FromResult(_ctx.Users.Contains(user));
+        }
+
         public async Task AddUser(User user)
         {
             _ctx.Users.Add(user);

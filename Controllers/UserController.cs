@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PCServ.DTO;
@@ -9,17 +10,18 @@ using PCServ.Models.User;
 
 namespace PCServ.Controllers
 {
+    [Authorize]
     [ApiController]
-    [Route("(controller)")]
+    [Route("[controller]")]
     public class UserController : Controller
     {
-        private readonly UserRepository _userRepo;
-        public UserController(UserRepository userRepo)
+        private readonly IUserRepository _userRepo;
+        public UserController(IUserRepository userRepo)
         {
             _userRepo = userRepo;
         }
         // GET: User/id
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult> Get(int id)
         {
             var user = await _userRepo.GetUserAsync(id);
@@ -28,19 +30,19 @@ namespace PCServ.Controllers
         }
 
         // GET: User/login
-        [HttpGet]
-        public async Task<ActionResult> Get(string login)
-        {
-            var user = await _userRepo.GetUserAsync(login);
-            var userDTO = new UserDTO(user);
-            return Json(userDTO);
-        }
+        //[HttpGet]
+        //public async Task<ActionResult> Get(string login)
+        //{
+        //    var user = await _userRepo.GetUserAsync(login);
+        //    var userDTO = new UserDTO(user);
+        //    return Json(userDTO);
+        //}
 
         // POST: User/Create/user
         [HttpPost]
         public async Task<ActionResult> Create([FromBody]User user)
         {
-            if (!_userRepo.Users.Contains(user))
+            if (! await _userRepo.Contains(user))
             {
                 await _userRepo.AddUser(user);
             }
@@ -51,7 +53,7 @@ namespace PCServ.Controllers
         [HttpPatch]
         public async Task<ActionResult> Edit([FromBody]User user)
         {
-            if (_userRepo.Users.Contains(user))
+            if (!await _userRepo.Contains(user))
             {
                 await _userRepo.UpdateUser(user);
             }
@@ -63,7 +65,7 @@ namespace PCServ.Controllers
         public async Task<ActionResult> Delete(string login)
         {
             var user = await _userRepo.GetUserAsync(login);
-            if (_userRepo.Users.Contains(user))
+            if (!await _userRepo.Contains(user))
             {
                 await _userRepo.DeleteUser(user);
             }
@@ -75,7 +77,7 @@ namespace PCServ.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var user = await _userRepo.GetUserAsync(id);
-            if (_userRepo.Users.Contains(user))
+            if (!await _userRepo.Contains(user))
             {
                 await _userRepo.DeleteUser(user);
             }

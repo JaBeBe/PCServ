@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace PCServ.Models.User
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         Task<User> GetUserAsync(int id);
         Task<User> GetUserAsync(string Login);
+        Task<bool> Contains(User user);
 
         Task AddUser(User user);
         Task UpdateUser(User user);

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PCServ.Authorization;
 using PCServ.DTO;
 using PCServ.Models.User;
 
@@ -22,6 +23,7 @@ namespace PCServ.Controllers
         }
         // GET: User/id
         [HttpGet("{id}")]
+        [AuthorizeRoles(UserRoleEnum.Administrator, UserRoleEnum.Technician)]
         public async Task<ActionResult> Get(int id)
         {
             var user = await _userRepo.GetUserAsync(id);

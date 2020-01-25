@@ -1,4 +1,3 @@
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +8,9 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component'
+import { UsersComponent } from './admin/users/users.component'
+import { ServicesComponent } from './admin/services/services.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { LoginComponent } from './login/login.component';
     NavMenuComponent,
     HomeComponent,
     LoginComponent,
-    DashboardComponent
+    AdminComponent,
+    UsersComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'admin', component: AdminComponent },
+
     ])
   ],
   providers: [],

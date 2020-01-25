@@ -138,6 +138,9 @@ namespace PCServ.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("EMail")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 

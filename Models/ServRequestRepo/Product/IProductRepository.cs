@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace PCServ.Models.ServRequestRepo
 {
-    interface IProductRepository
+    public interface IProductRepository
     {
         Task<Product> GetProduct(int id);
         Task<Product> GetProduct(string serialNo);
         Task<IEnumerable<Product>> BrowseProduct(string name = "");
-
+        Task<bool> Contains(Product product);
 
         Task AddProduct(Product product);
         Task UpdateProduct(Product product);

@@ -21,7 +21,7 @@ namespace PCServ.Controllers
         {
             _userRepo = userRepo;
         }
-        // GET: User/id
+        // GET: User/Get/int
         [HttpGet("{id}")]
         [AuthorizeRoles(UserRoleEnum.Administrator, UserRoleEnum.Technician)]
         public async Task<ActionResult> Get(int id)
@@ -31,7 +31,7 @@ namespace PCServ.Controllers
             return Json(userDTO);
         }
 
-        //Search: User/login
+        //GET: User/Search/string
        [HttpGet]
         public async Task<ActionResult> Search(string login)
         {
@@ -44,7 +44,7 @@ namespace PCServ.Controllers
         [HttpPost]
         public async Task<ActionResult> Create([FromBody]User user)
         {
-            if (! await _userRepo.Contains(user))
+            if (!await _userRepo.Contains(user))
             {
                 await _userRepo.AddUser(user);
             }
@@ -67,7 +67,7 @@ namespace PCServ.Controllers
         public async Task<ActionResult> Delete(string login)
         {
             var user = await _userRepo.GetUserAsync(login);
-            if (!await _userRepo.Contains(user))
+            if (await _userRepo.Contains(user))
             {
                 await _userRepo.DeleteUser(user);
             }
@@ -79,7 +79,7 @@ namespace PCServ.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var user = await _userRepo.GetUserAsync(id);
-            if (!await _userRepo.Contains(user))
+            if (await _userRepo.Contains(user))
             {
                 await _userRepo.DeleteUser(user);
             }

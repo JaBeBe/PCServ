@@ -65,6 +65,7 @@ namespace PCServ
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IServiceRequestRepository, ServiceRequestRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IRequestHistoryRepository, RequestHistoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

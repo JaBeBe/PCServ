@@ -14,7 +14,6 @@ namespace PCServ.Models.ServRequestRepo
         {
             _ctx = context;
         }
-        public List<Product> Products => _ctx.Stuffs.ToList();
         public async Task<Product> GetProduct(int id) => await Task.FromResult(_ctx.Stuffs.SingleOrDefault(x => x.Id == id));
 
         public async Task<Product> GetProduct(string serialNo) => await Task.FromResult(_ctx.Stuffs.SingleOrDefault(x => x.SerialNo == serialNo));      
@@ -46,5 +45,7 @@ namespace PCServ.Models.ServRequestRepo
             _ctx.Stuffs.Remove(product);
             await Task.CompletedTask;
         }
+
+        public async Task<bool> Contains(Product product) => await Task.FromResult(_ctx.Stuffs.Contains(product));
     }
 }

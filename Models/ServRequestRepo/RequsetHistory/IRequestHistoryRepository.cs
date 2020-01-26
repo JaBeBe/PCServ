@@ -5,8 +5,16 @@ using System.Threading.Tasks;
 
 namespace PCServ.Models.ServRequestRepo
 {
-    interface IRequestHistoryRepository
+    public interface IRequestHistoryRepository
     {
+        Task<RequestHistory> GetRequestHistoryAsync(int id);
+        Task<RequestHistory> GetRequestHistoryAsync(User.User client);
+        Task<IEnumerable<RequestHistory>> Histories(ServiceRequest request);
+        Task<bool> Contains(RequestHistory request);
+
+
+        Task AddRequestHistoryAsync(RequestHistory request);
+        Task DeleteServiceRequestAsync(RequestHistory request);
 
     }
 }

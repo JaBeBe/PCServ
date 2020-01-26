@@ -14,6 +14,7 @@ namespace PCServ.Models.ServRequestRepo
         {
             _ctx = context;
         }
+        public List<RequestHistory> Histiries;
 
         public async Task<ServiceRequest> GetServiceRequestAsync(int id) => await Task.FromResult(_ctx.ServReqs.SingleOrDefault(x => x.Id == id));
 
@@ -30,13 +31,16 @@ namespace PCServ.Models.ServRequestRepo
             }
             return await Task.FromResult(servs);
         }
-
+        public async Task GetRequestHistory(ServiceRequest request)
+        {
+             Histiries = await Task.FromResult(_ctx.ReqHistory.Where(x => x.Request == request).ToList());
+        }
         public async Task AddServiceRequestAsync(ServiceRequest request)
         {
             _ctx.ServReqs.Add(request);
             await Task.CompletedTask;
         }
-
+      
         public async Task UpdateServiceRequestAsync(ServiceRequest request)
         {
             _ctx.ServReqs.Update(request);
@@ -48,5 +52,7 @@ namespace PCServ.Models.ServRequestRepo
             _ctx.ServReqs.Remove(request);
             await Task.CompletedTask;
         }
+
+
     }
 }

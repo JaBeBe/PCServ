@@ -31,14 +31,14 @@ namespace PCServ.Controllers
             return Json(userDTO);
         }
 
-        // GET: User/login
-        //[HttpGet]
-        //public async Task<ActionResult> Get(string login)
-        //{
-        //    var user = await _userRepo.GetUserAsync(login);
-        //    var userDTO = new UserDTO(user);
-        //    return Json(userDTO);
-        //}
+        //Search: User/login
+       [HttpGet]
+        public async Task<ActionResult> Search(string login)
+        {
+            var user = await _userRepo.GetUserAsync(login);
+            var userDTO = new UserDTO(user);
+            return Json(userDTO);
+        }
 
         // POST: User/Create/user
         [HttpPost]

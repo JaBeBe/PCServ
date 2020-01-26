@@ -15,7 +15,6 @@ namespace PCServ.Models.ServRequestRepo
         public string Description { get; set; }
         public Product Stuff { get; set; }
         public User.User Client { get; set; }
-        public List<IEnumerable<RequestHistory>> History;
 
         private ServiceRequest()
         {
@@ -27,9 +26,7 @@ namespace PCServ.Models.ServRequestRepo
             Description = description;
             Stuff = product;
             Client = client;
-            CreateAt = DateTime.Now;
-            History = new List<IEnumerable<RequestHistory>>();
-            
+            CreateAt = DateTime.Now;            
         }
     }
 }

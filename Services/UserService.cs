@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using PCServ.Context;
 using PCServ.Helpers;
 using PCServ.Models.Login;
+using PCServ.Models.Register;
 using PCServ.Models.User;
 
 namespace PCServ.Services
@@ -17,6 +18,7 @@ namespace PCServ.Services
     public interface IUserService
     {
         Task<User> LoginUser(LoginForm loginForm);
+        Task<int> RegisterUser(RegisterForm registerForm);
     }
 
     public class UserService : IUserService
@@ -32,9 +34,14 @@ namespace PCServ.Services
 
         public async Task<User> LoginUser(LoginForm loginForm)
         {
-            var user =  await _appDbContext.Users.Where(u => u.Login == loginForm.Login && u.Password == loginForm.Password).FirstOrDefaultAsync();
+            var user =  await _appDbContext.Users.Where(u => u.Login == loginForm.Login).FirstOrDefaultAsync();
 
             if (user == null)
+            {
+                return null;
+            }
+
+            if(!PasswordHelper.Verify(loginForm.Password, user.Password))
             {
                 return null;
             }
@@ -58,6 +65,15 @@ namespace PCServ.Services
             user.Token = tokenHandler.WriteToken(token);
 
             return user;
+        }
+
+        public async Task<int> RegisterUser(RegisterForm registerForm)
+        {
+
+            await _appDbContext.Users.AddAsync(registerForm.CreateUser());
+
+            return await _appDbContext.SaveChangesAsync();
+
         }
     }
 }

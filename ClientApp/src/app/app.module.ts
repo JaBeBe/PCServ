@@ -1,3 +1,4 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -22,13 +23,27 @@ import { RegisterComponent } from './register/register.component';
     AdminComponent,
     UsersComponent,
     ServicesComponent,
+<<<<<<< HEAD
     RegisterComponent
+=======
+    DashboardComponent
+>>>>>>> 7b62f6d... Add RegisterController
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+<<<<<<< HEAD
     AppRoutingModule
+=======
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
+      { path: 'admin', component: AdminComponent },
+      { path: 'dashboard', component: DashboardComponent }
+
+    ])
+>>>>>>> 7b62f6d... Add RegisterController
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,7 +21,6 @@ namespace PCServ.Controllers
             _userService = userService;
         }
 
-
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Authenticate([FromBody]LoginForm loginForm)

@@ -1,6 +1,5 @@
 import { LoginServiceService } from './login-service.service';
-import { FormsModule, NgForm } from '@angular/forms';
-import { LoginForm } from './login-form';
+import { NgForm} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,9 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  submitted = false;
+
 
   firstSubmit = false;
-  constructor(private loginService: LoginServiceService, private router: Router) { }
+  constructor(
+    private loginService: LoginServiceService,
+    private router: Router
+
+  ) {
+
+
+  }
 
   ngOnInit() {
   }
@@ -22,7 +30,7 @@ export class LoginComponent implements OnInit {
     if (form.valid) {
       this.loginService.authenticate(form.value, (success) => {
         if (success) {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['admin']);
         }
       });
     }

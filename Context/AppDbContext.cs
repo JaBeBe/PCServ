@@ -14,6 +14,8 @@ namespace PCServ.Context
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<ServiceRequest> ServReqs { get; set; }
+        public DbSet<RequestHistory> ReqHistory{ get; set; }
+        public DbSet<Product> Stuffs { get; set; }
 
         public AppDbContext( DbContextOptions options): base(options)
         {

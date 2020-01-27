@@ -26,7 +26,7 @@ namespace PCServ.Models.ServRequestRepo
             var servs = _ctx.ServReqs.AsEnumerable();
             if (!string.IsNullOrWhiteSpace(title))
             {
-                servs = servs.Where(x => x.Title.ToLowerInvariant().Contains(title.ToLowerInvariant()));
+                servs = servs.Where(x => x.Title.ToLowerInvariant().Contains(title.ToLowerInvariant())).ToList();
             }
             return await Task.FromResult(servs);
         }
@@ -36,7 +36,7 @@ namespace PCServ.Models.ServRequestRepo
             _ctx.ServReqs.Add(request);
             await Task.CompletedTask;
         }
-
+      
         public async Task UpdateServiceRequestAsync(ServiceRequest request)
         {
             _ctx.ServReqs.Update(request);
@@ -48,5 +48,8 @@ namespace PCServ.Models.ServRequestRepo
             _ctx.ServReqs.Remove(request);
             await Task.CompletedTask;
         }
+
+        public async Task<bool> Contains(ServiceRequest request) => await Task.FromResult(_ctx.ServReqs.Contains(request));
+
     }
 }

@@ -13,7 +13,6 @@ import { UsersComponent } from './admin/users/users.component'
 import { ServicesComponent } from './admin/services/services.component';
 import { AppRoutingModule } from './app-routing.module'
 import { RegisterComponent } from './register/register.component';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,14 +30,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'admin', component: AdminComponent },
-      { path: 'dashboard', component: DashboardComponent }
-
-    ])
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

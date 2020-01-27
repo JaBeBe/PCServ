@@ -13,6 +13,7 @@ import { UsersComponent } from './admin/users/users.component'
 import { ServicesComponent } from './admin/services/services.component';
 import { AppRoutingModule } from './app-routing.module'
 import { RegisterComponent } from './register/register.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,19 +24,14 @@ import { RegisterComponent } from './register/register.component';
     AdminComponent,
     UsersComponent,
     ServicesComponent,
-<<<<<<< HEAD
-    RegisterComponent
-=======
+    RegisterComponent,
     DashboardComponent
->>>>>>> 7b62f6d... Add RegisterController
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-<<<<<<< HEAD
-    AppRoutingModule
-=======
+    AppRoutingModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
@@ -43,7 +39,6 @@ import { RegisterComponent } from './register/register.component';
       { path: 'dashboard', component: DashboardComponent }
 
     ])
->>>>>>> 7b62f6d... Add RegisterController
   ],
   providers: [],
   bootstrap: [AppComponent]

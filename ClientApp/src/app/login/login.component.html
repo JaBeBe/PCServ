@@ -2,17 +2,17 @@
   <div class="col-md-4 col-sm-6 col-xs-12 text-center">
     <h2>Login into PCServ</h2>
 
-    <form id="loginFor" #form="ngForm" (ngSubmit)="formOnSumbit()">
+    <form id="loginFor" #form="ngForm" (ngSubmit)="formOnSumbit(form)">
 
       <div class="form-group">
         <label for="login">Login</label>
-        <input type="login" class="form-control" id="login" name="login" #loginInput="ngModel" formControlName="login" ngModel required>
+        <input type="login" class="form-control" id="login" name="login" #loginInput="ngModel" ngModel required>
         <p *ngIf="firstSubmit && loginInput.hasError('required')" class="text-danger">The field is required.</p>
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" #passwordInput="ngModel" formControlName="password" ngModel required>
+        <input type="password" class="form-control" id="password" name="password" #passwordInput="ngModel"  ngModel required>
         <p *ngIf="firstSubmit && passwordInput.hasError('required')" class="text-danger">The field is required.</p>
       </div>
 

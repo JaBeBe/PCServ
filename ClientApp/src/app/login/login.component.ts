@@ -2,7 +2,7 @@ import { LoginServiceService } from './login-service.service';
 import { NgForm} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

@@ -11,9 +11,8 @@ export class RegisterComponent implements OnInit {
   
   contactForm: FormGroup;
   contact = {
-      name: '',
-      email: '',
-      text: ''
+      login: '',
+      password: ''
   };
   submitted = false;
 
@@ -23,15 +22,14 @@ export class RegisterComponent implements OnInit {
 
   createForm(): void {
       this.contactForm = new FormGroup({
-          'name': new FormControl(this.contact.name, [
+          'login': new FormControl(this.contact.login, [
               Validators.required,
-              Validators.minLength(4)
+              Validators.minLength(1)
           ]),
-          'email': new FormControl(this.contact.email, [
+          'password': new FormControl(this.contact.password, [
               Validators.required,
-              Validators.email
-          ]),
-          'text': new FormControl(this.contact.text, Validators.required)
+              Validators.minLength(1)
+          ])
       });
   }
 

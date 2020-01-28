@@ -1,19 +1,17 @@
-import { LoginForm } from './login-form';
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../user/user';
 import { Observable } from 'rxjs';
-import { resolve } from 'url';
-
 @Injectable({
     providedIn: 'root'
 })
 export class HttpService {
-
     constructor(private http: HttpClient) { }
 
+    addUser(user: any): Observable<any> {
+        return this.http.post<any>(`http://localhost:8089/topics/${user.userId}`, user);
+    }
 
-    getData() {
-        return this.http.get("../assets/fakeData.json")
+    getUserById(userId: any): Observable<any> {
+        return this.http.get(`http://localhost:8089/topics/${userId}`);
     }
 }

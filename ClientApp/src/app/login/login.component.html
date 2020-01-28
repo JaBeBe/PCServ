@@ -6,7 +6,7 @@
 
       <div class="form-group">
         <label for="login">Login</label>
-        <input type="login" class="form-control" id="login" name="login" #loginInput="ngModel" ngModel required>
+        <input type="text" class="form-control" id="login" name="login" #loginInput="ngModel" ngModel required>
         <p *ngIf="firstSubmit && loginInput.hasError('required')" class="text-danger">The field is required.</p>
       </div>
 

@@ -38,8 +38,4 @@ export class LoginServiceService {
   isLoggedIn() {
     return true;
   }
-
-  getData(){
-   return this.http.get("../assets/data.json")}
-  
 }

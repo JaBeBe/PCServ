@@ -54,6 +54,9 @@
     <Compile Remove="PCServTests\UnitTest1.cs" />
     <Compile Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.AssemblyInfo.cs" />
     <Compile Remove="PCServTests\PasswordHelperTests.cs" />
+    <Compile Remove="PCServTests\UnitTest1 %28copy%29.cs" />
+    <Compile Remove="PCServTests\PasswordHelperTests.cs" />
+    <Compile Remove="PCServTests\LoginControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="PCServTests\obj\PCServTests.csproj.nuget.g.props" />

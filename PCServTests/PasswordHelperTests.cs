@@ -12,6 +12,12 @@ namespace PCServTests
             public string Hash { get; set; }
         }
 
+        public class PasswordSaltPair
+        {
+            public string Password { get; set; }
+            public string Salt { get; set; }
+        }
+
         // wygenerowane przy użyciu strony https://emn178.github.io/online-tools/sha256.html
         // zweryfikowane przy użyciu strony https://xorbin.com/tools/sha256-hash-calculator
         public static PasswordHashPair[] ValidPasswordHashList = new PasswordHashPair[]
@@ -63,6 +69,30 @@ namespace PCServTests
             }
         };
 
+        public static PasswordSaltPair[] PasswordWithSaltPairs = new PasswordSaltPair[]
+        {
+            new PasswordSaltPair()
+            {
+                Password = "pass1", Salt = "2wdscwef"
+            },
+            new PasswordSaltPair()
+            {
+                Password = "admin2!@!#3", Salt = "fef34fsdf"
+            },
+            new PasswordSaltPair()
+            {
+                Password = "haha3haha4123123!", Salt = "3rewds"
+            },
+            new PasswordSaltPair()
+            {
+                Password = "CoJestNo19191919%$#@", Salt = "32rewds"
+            },
+            new PasswordSaltPair()
+            {
+                Password = "#$@qweDS@!#2312dEDwe!", Salt = "23rewfsd"
+            },
+        };
+
         [Test]
         [TestCaseSource("ValidPasswordHashList")]
         public void Hash_HashWithoutSalt_CheckIfReturnsValidSha256Hash(PasswordHashPair passwordHashPair)
@@ -106,6 +136,22 @@ namespace PCServTests
 
             // Assert
             Assert.IsFalse(result);
+        }
+
+        [Test]
+        [TestCaseSource("PasswordWithSaltPairs")]
+        public void HashPasswordWithSalt_VerifyPasswordAndHash_ReturnsTrue(PasswordSaltPair passwordSaltPair)
+        {
+            // Arrange
+            string password = passwordSaltPair.Password;
+            string salt = passwordSaltPair.Salt;
+
+            // Act
+            string generatedHash = PasswordHelper.Hash(password, salt);
+            bool result = PasswordHelper.Verify(password, generatedHash, salt);
+
+            // Assert
+            Assert.IsTrue(result);
         }
     }
 }

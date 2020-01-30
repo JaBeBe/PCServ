@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     if (form.valid) {
       this.loginService.authenticate(form.value, (success) => {
         if (success) {
-          this.router.navigate(['admin']);
+          this.router.navigate(['dashboard']);
         }
       });
     }

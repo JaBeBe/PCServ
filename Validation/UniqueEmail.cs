@@ -10,6 +10,9 @@ namespace PCServ.Validation
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            if(value == null)
+                return ValidationResult.Success;
+
             var ctx = (AppDbContext)validationContext.GetService(typeof(AppDbContext));
 
             var user = ctx.Users.Where(u => u.EMail == value.ToString()).FirstOrDefault();

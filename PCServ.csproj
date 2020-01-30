@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -29,16 +29,15 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="PCServTests\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="PCServTests\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-    <Content Remove="PCServTests\obj\PCServTests.csproj.nuget.dgspec.json" />
-    <Content Remove="PCServTests\obj\project.assets.json" />
-    <Content Remove="PCServTests\bin\Debug\netcoreapp3.1\appsettings.json" />
-    <Content Remove="PCServTests\bin\Debug\netcoreapp3.1\appsettings.Development.json" />
-    <Content Remove="PCServTests\bin\Debug\netcoreapp3.1\Properties\launchSettings.json" />
-    <Content Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServTests.deps.json" />
-    <Content Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServTests.runtimeconfig.dev.json" />
-    <Content Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServTests.runtimeconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="PCServTests\**" />
+    <None Remove="PCServTests\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,238 +48,6 @@
     <Folder Include="Authorization\" />
     <Folder Include="Models\Register\" />
     <Folder Include="Validation\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="PCServTests\UnitTest1.cs" />
-    <Compile Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.AssemblyInfo.cs" />
-    <Compile Remove="PCServTests\PasswordHelperTests.cs" />
-    <Compile Remove="PCServTests\UnitTest1 %28copy%29.cs" />
-    <Compile Remove="PCServTests\PasswordHelperTests.cs" />
-    <Compile Remove="PCServTests\LoginControllerTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="PCServTests\obj\PCServTests.csproj.nuget.g.props" />
-    <None Remove="PCServTests\obj\PCServTests.csproj.nuget.g.targets" />
-    <None Remove="PCServTests\obj\PCServTests.csproj.nuget.cache" />
-    <None Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.csproj.FileListAbsolute.txt" />
-    <None Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.assets.cache" />
-    <None Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.csprojAssemblyReference.cache" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\nunit_random_seed.tmp" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SpaServices.Extensions.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SpaServices.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.InternalAbstractions.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.PlatformAbstractions.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CommunicationUtilities.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CoreUtilities.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.Common.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.Utilities.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Sqlite.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CrossPlatEngine.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\nunit.framework.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.NodeServices.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\SQLitePCLRaw.provider.dynamic_cdecl.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\testhost.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\SQLitePCLRaw.nativelibrary.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\linux-x86\native\libe_sqlite3.so" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\libe_sqlite3.so" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\linux-armel\native\libe_sqlite3.so" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServ.pdb" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\alpine-x64\native\libe_sqlite3.so" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\e_sqlite3.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libe_sqlite3.so" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\linux-musl-x64\native\libe_sqlite3.so" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\linux-arm\native\libe_sqlite3.so" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServ" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libe_sqlite3.dylib" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\nunit.engine.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServ.Views.pdb" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServ.Views.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServ.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\nunit.engine.api.dll" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServTests.pdb" />
-    <None Remove="PCServTests\bin\Debug\netcoreapp3.1\PCServTests.dll" />
-    <None Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.dll" />
-    <None Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.pdb" />
-    <None Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.AssemblyInfoInputs.cache" />
-    <None Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.csproj.CopyComplete" />
-    <None Remove="PCServTests\obj\Debug\netcoreapp3.1\PCServTests.csprojAssemblyReference.cache" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
@@ -302,7 +69,7 @@
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
       <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
-      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>

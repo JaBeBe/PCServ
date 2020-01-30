@@ -7,16 +7,16 @@
       <div class="form-group">
         <label class="center-block">Login:
         </label>
-        <input class="form-control" formControlName="login">
+        <input class="form-control" formControlName="login" id="login">
       </div>
 
       <div class="form-group">
         <label class="center-block">Password:
         </label>
-        <input class="form-control" formControlName="password">
+        <input class="form-control" formControlName="password" id="password">
       </div>
 
-      <button type="submit" [disabled]="!contactForm.valid" class="btn btn-primary btn-block">Save</button>
+      <button type="submit" [disabled]="!contactForm.valid" class="btn btn-primary btn-block" id="registerButton">Save</button>
     </form>
 
   </div>

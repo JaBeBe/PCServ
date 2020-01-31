@@ -1,17 +1,17 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { BrowserModule} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { RegisterComponent } from '../register/register.component';
+import { RegComponent } from '../reg/reg.component';
 
 describe('RegisterComponent', () => {
-  let comp: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+  let comp: RegComponent;
+  let fixture: ComponentFixture<RegComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        RegisterComponent
+        RegComponent
       ],
       imports: [
         BrowserModule,
@@ -19,9 +19,9 @@ describe('RegisterComponent', () => {
         ReactiveFormsModule
       ]
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(RegisterComponent);
+      fixture = TestBed.createComponent(RegComponent);
 
-      comp = fixture.componentInstance; 
+      comp = fixture.componentInstance;
     });
   }));
 
@@ -31,13 +31,13 @@ describe('RegisterComponent', () => {
     expect(comp.submitted).toBeTruthy();
   }));
 
- it(`form should be invalid`, async(() => {
+  it(`empty form should be invalid`, async(() => {
     comp.contactForm.controls['login'].setValue('');
     comp.contactForm.controls['password'].setValue('');
     expect(comp.contactForm.valid).toBeFalsy();
   }));
 
-  it(`form should be valid`, async(() => {
+  it(`filled form should be valid`, async(() => {
     comp.contactForm.controls['login'].setValue('DefaultLogin');
     comp.contactForm.controls['password'].setValue('DefaultPassword');
     expect(comp.contactForm.valid).toBeTruthy();

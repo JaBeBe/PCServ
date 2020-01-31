@@ -10,9 +10,11 @@ describe('AuthGuard', () => {
   describe('canActivate', () => {
     let authGuard: AuthGuardServiceGuard;
     let authService;
-    let router;
+    let router ;
 
     it('should return true for a logged in user', () => {
+
+      //sample with response from "server" with user login status
       authService = { isLoggedIn: () => true };
       router = new MockRouter();
       authGuard = new AuthGuardServiceGuard(authService, router);
@@ -21,6 +23,8 @@ describe('AuthGuard', () => {
     });
 
     it('should return false for a logged out user', () => {
+
+      //mock with response from "server" with user login status
       authService = { isLoggedIn: () => false };
       router = new MockRouter();
       authGuard = new AuthGuardServiceGuard(authService, router);
@@ -29,6 +33,8 @@ describe('AuthGuard', () => {
     });
 
     it('should navigate to home for a logged out user', () => {
+
+      //mock with response from "server" with user login status
       authService = { isLoggedIn: () => false };
       router = new MockRouter();
       authGuard = new AuthGuardServiceGuard(authService, router);

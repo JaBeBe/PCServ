@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http/testing';
 
 describe('HttpService', () => {
-    // We declare the variables that we'll use for the Test Controller and for our Service
+    // Declare the variables that we'll use for the Test Controller and for Service
     let httpTestingController: HttpTestingController;
     let service: HttpService;
 
@@ -16,16 +16,17 @@ describe('HttpService', () => {
             imports: [HttpClientTestingModule]
         });
 
-        // We inject our service (which imports the HttpClient) and the Test Controller
+        //  inject our service (which imports the HttpClient) and the Test Controller
         httpTestingController = TestBed.get(HttpTestingController);
         service = TestBed.get(HttpService);
     });
 
+    // Verify that there are no pending HTTP requests
     afterEach(() => {
         httpTestingController.verify();
     });
 
-    describe('addCourse()', () => {
+    describe('addUser()', () => {
         it('returned Observable should match the right data', () => {
             const mockCourse = {
                 FirstName: "Stuart",
@@ -37,10 +38,12 @@ describe('HttpService', () => {
                     expect(courseData.FirstName).toEqual('Stuart');
                 });
 
+            //Expect that a single request has been made which matches the given URL, and return its mock.
             const req = httpTestingController.expectOne('http://localhost:8089/topics/1');
 
             expect(req.request.method).toEqual('POST');
 
+            //flush with the mock data compare the respond with parameter
             req.flush(mockCourse);
         });
     });
@@ -66,10 +69,15 @@ describe('HttpService', () => {
                     expect(userData[1].LastName).toEqual('Connor');
                 });
 
+            //Expect that a single request has been made which matches the given URL, and return its mock.
             const req = httpTestingController.expectOne(
                 'http://localhost:8089/topics/1'
             );
 
+
+            expect(req.request.method).toEqual('GET');
+
+            //flush with the mock data compare the respond with parameter
             req.flush(mockUsers);
         });
     });

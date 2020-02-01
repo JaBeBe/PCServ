@@ -18,7 +18,7 @@ namespace PCServTests
             _driver = new FirefoxDriver(options);
         }
         [Test]
-        public void AddNewServiceRequest_Save()
+        public void AddNewServiceRequest_RedirectsToDashboard()
         {
             // go to out website
             _driver.Navigate().GoToUrl("https://localhost:5001");

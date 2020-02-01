@@ -18,7 +18,7 @@ namespace PCServTests
             _driver = new FirefoxDriver(options);
         }
         [Test]
-        public void RedirectToDashboardAfterAuthentication()
+        public void AddNewServiceRequest_Save()
         {
             // go to out website
             _driver.Navigate().GoToUrl("https://localhost:5001");
@@ -35,10 +35,11 @@ namespace PCServTests
             titleField.SendKeys("jakis");
 
             var descriptionField = _driver.FindElement(By.Name("description"));
-            descriptionField.SendKeys("password");
+            descriptionField.SendKeys("opis produktu");
 
 
             var productField = _driver.FindElement(By.Name("product"));
+            productField.SendKeys("to jest produkt");
 
             // get submit button and send form
             var submitButton = _driver.FindElement(By.CssSelector("[type='submit']"));

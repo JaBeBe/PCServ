@@ -33,19 +33,19 @@ namespace PCServ.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Stuffs");
                 });
 
             modelBuilder.Entity("PCServ.Models.ServRequestRepo.RequestHistory", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("ClientId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CtreateAt")
+                    b.Property<DateTime>("CreateAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -57,7 +57,7 @@ namespace PCServ.Migrations
                     b.Property<int?>("ServiceManId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("ClientId");
 
@@ -183,6 +183,9 @@ namespace PCServ.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordResetToken")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Role")

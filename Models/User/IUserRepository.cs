@@ -9,6 +9,7 @@ namespace PCServ.Models.User
     {
         Task<User> GetUserAsync(int id);
         Task<User> GetUserAsync(string Login);
+        Task<User> GetUserByEmailAsync(string EMail);
         Task<bool> Contains(User user);
 
         Task AddUser(User user);

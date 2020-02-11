@@ -29,6 +29,9 @@ namespace PCServ.Models.Register
         [StringLength(50, MinimumLength = 8)]
         public string Password { get; set; }
 
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+
         public User.User CreateUser()
         {
             return new User.User(FirstName, LastName, Login, PasswordHelper.Hash(Password), EMail);

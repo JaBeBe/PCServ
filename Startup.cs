@@ -65,6 +65,7 @@ namespace PCServ
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMailService, MailService>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IServiceRequestRepository, ServiceRequestRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();

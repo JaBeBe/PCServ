@@ -10,8 +10,8 @@ import { NgForm, FormGroup, FormControl } from '@angular/forms';
 export class CheckStatusComponent implements OnInit {
 
   private url = 'ServiceRequest/Get/';
-  formData : FormGroup;
-
+  formData: FormGroup;
+  find: boolean = true;
   constructor(
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string
@@ -21,14 +21,17 @@ export class CheckStatusComponent implements OnInit {
     this.formData = new FormGroup({
       orderID: new FormControl()
     });
+    console.log(this.find);
   }
   showID() {
     console.log(this.formData.value.orderID);
   }
   showOrder() {
-    return this.http.get(this.baseUrl + this.url+this.formData.value.orderIDds).subscribe(result => {
+    return this.http.get(this.baseUrl + this.url + this.formData.value.orderIDds).subscribe(result => {
       console.log(result);
+      this.find=true;
     }, error => {
+      this.find = false;
       console.error(error);
     });
   }

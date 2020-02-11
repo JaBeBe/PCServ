@@ -10,7 +10,8 @@
         <button type="submit" class="btn btn-warning btn-lg btn-block" (click)="showOrder()">Check</button>
 
       </form>
-      <button class="btn btn-warning btn-lg btn-block" (click)="showID()">showid</button>
-
+      <div class="alert alert-warning mt-5" role="alert" *ngIf="!find">
+        We can't find the order with that ID :(
+      </div>
     </div>
   </div>

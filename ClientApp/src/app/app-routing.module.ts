@@ -1,4 +1,3 @@
-import { AddServiceRequestComponent } from './add-service-request/add-service-request.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -19,9 +18,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'addnew', component: AddNewComponent},
   {path: 'checkstatus', component: CheckStatusComponent},
-
-  { path: 'register', component: RegisterComponent },
-  { path: 'new-request', component: AddServiceRequestComponent }
+  { path: 'register', component: RegisterComponent }
 ];
 
 

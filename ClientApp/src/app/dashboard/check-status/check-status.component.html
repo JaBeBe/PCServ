@@ -1,14 +1,16 @@
 <div class="row ">
     <div class="col-12 ">
-      <form>
+      <form [formGroup]="formData" >
         <div class="form-group">
           <label for="name">Order ID</label><br>
-          <input type="text" id="orderID" required>
+          <input type="text" id="orderID" formControlName="orderID" required>
         </div>
 
 
-        <button type="submit" class="btn btn-warning btn-lg btn-block" (click)="showSucces">Check</button>
+        <button type="submit" class="btn btn-warning btn-lg btn-block" (click)="showOrder()">Check</button>
 
       </form>
+      <button class="btn btn-warning btn-lg btn-block" (click)="showID()">showid</button>
+
     </div>
   </div>

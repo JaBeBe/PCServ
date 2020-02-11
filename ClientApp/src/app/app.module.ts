@@ -1,4 +1,3 @@
-import { AddServiceRequestComponent } from './add-service-request/add-service-request.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -29,8 +28,6 @@ import { CheckStatusComponent } from './dashboard/check-status/check-status.comp
     DashboardComponent,
     AddNewComponent,
     CheckStatusComponent
-    RegComponent,
-    AddServiceRequestComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

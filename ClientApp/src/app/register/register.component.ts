@@ -42,7 +42,4 @@ export class RegisterComponent implements OnInit {
             password: this.passwordCtrl
         });
     }
-    routeToDashboard() {
-        this.router.navigate(['dashboard']);
-    }
 }

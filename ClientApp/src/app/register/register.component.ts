@@ -25,22 +25,8 @@ export class RegisterComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
     ) {
-        this.createForm();
-
     }
 
-    createForm(): void {
-        this.contactForm = new FormGroup({
-            'login': new FormControl(this.contact.login, [
-                Validators.required,
-                Validators.minLength(1)
-            ]),
-            'password': new FormControl(this.contact.password, [
-                Validators.required,
-                Validators.minLength(1)
-            ])
-        });
-    }
 
     onSubmit(): void {
         this.submitted = true;

@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { AddNewComponent } from './dashboard/add-new/add-new.component';
+import { CheckStatusComponent } from './dashboard/check-status/check-status.component';
 
 
 const routes: Routes = [
@@ -13,7 +15,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'dashboard', component: DashboardComponent },
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'addnew', component: AddNewComponent},
+  {path: 'checkstatus', component: CheckStatusComponent},
+
 ];
 
 

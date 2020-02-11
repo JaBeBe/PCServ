@@ -11,7 +11,6 @@ import { resolve } from 'url';
 export class LoginServiceService {
 
   private url = 'login';
-  navItems: any;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
@@ -34,8 +33,4 @@ export class LoginServiceService {
     return JSON.parse(localStorage.getItem('user'));
   }
 
-  // Only for unit test
-  isLoggedIn() {
-    return true;
-  }
 }

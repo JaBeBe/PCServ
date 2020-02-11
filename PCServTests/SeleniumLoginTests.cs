@@ -6,7 +6,7 @@ using System;
 
 namespace PCServTests
 {
-   
+   /*
     [TestFixture]
     public class SeleniumLoginTests
     {
@@ -56,5 +56,5 @@ namespace PCServTests
             _driver.Close();
         }
     }
-    
+    */
 }

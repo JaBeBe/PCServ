@@ -13,8 +13,8 @@ import { UsersComponent } from './admin/users/users.component'
 import { ServicesComponent } from './admin/services/services.component';
 import { AppRoutingModule } from './app-routing.module'
 import { RegisterComponent } from './register/register.component';
-import { RegComponent} from './reg/reg.component'
-
+import { AddNewComponent } from './dashboard/add-new/add-new.component';
+import { CheckStatusComponent } from './dashboard/check-status/check-status.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,8 @@ import { RegComponent} from './reg/reg.component'
     ServicesComponent,
     RegisterComponent,
     DashboardComponent,
-    RegComponent
+    AddNewComponent,
+    CheckStatusComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

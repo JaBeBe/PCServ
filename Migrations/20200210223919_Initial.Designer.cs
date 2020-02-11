@@ -9,8 +9,8 @@ using PCServ.Context;
 namespace PCServ.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200125144048_NewInitialMigration")]
-    partial class NewInitialMigration
+    [Migration("20200210223919_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,39 @@ namespace PCServ.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Stuffs");
+                });
+
+            modelBuilder.Entity("PCServ.Models.ServRequestRepo.RequestHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("RequestId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ServiceManId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("ServiceManId");
+
+                    b.ToTable("ReqHistory");
                 });
 
             modelBuilder.Entity("PCServ.Models.ServRequestRepo.ServiceRequest", b =>
@@ -155,12 +187,30 @@ namespace PCServ.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PasswordResetToken")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Role")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("PCServ.Models.ServRequestRepo.RequestHistory", b =>
+                {
+                    b.HasOne("PCServ.Models.User.User", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId");
+
+                    b.HasOne("PCServ.Models.ServRequestRepo.ServiceRequest", "Request")
+                        .WithMany()
+                        .HasForeignKey("RequestId");
+
+                    b.HasOne("PCServ.Models.User.User", "ServiceMan")
+                        .WithMany()
+                        .HasForeignKey("ServiceManId");
                 });
 
             modelBuilder.Entity("PCServ.Models.ServRequestRepo.ServiceRequest", b =>

@@ -8,17 +8,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { AddNewComponent } from './dashboard/add-new/add-new.component';
 import { CheckStatusComponent } from './dashboard/check-status/check-status.component';
-
+import {AuthGuardService} from './shared/auth-guard.service'
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  {path: 'register', component: RegisterComponent},
-  {path: 'addnew', component: AddNewComponent},
-  {path: 'checkstatus', component: CheckStatusComponent},
-  { path: 'register', component: RegisterComponent }
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
+  { path: 'register', component: RegisterComponent },
+  /*{ path: 'addnew', component: AddNewComponent },
+  { path: 'checkstatus', component: CheckStatusComponent },*/
 ];
 
 

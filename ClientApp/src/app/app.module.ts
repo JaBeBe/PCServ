@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { RegisterComponent } from './register/register.component';
 import { AddNewComponent } from './dashboard/add-new/add-new.component';
 import { CheckStatusComponent } from './dashboard/check-status/check-status.component'
+import { DataSharingService } from './shared/data-sharing.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import { CheckStatusComponent } from './dashboard/check-status/check-status.comp
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

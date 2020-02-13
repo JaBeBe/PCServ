@@ -11,23 +11,34 @@ import { NgForm } from '@angular/forms';
 export class RequestResetComponent implements OnInit {
 
   public firstSubmit: boolean;
+  public alertMessage: string;
+  public showAlert: boolean;
 
   constructor(private passwordService: PasswordServiceService, private router: Router) {
     this.firstSubmit = false;
   }
 
   ngOnInit() {
+    this.alertMessage = '';
+    this.showAlert = false;
   }
 
   formOnSumbit(form: NgForm) {
     this.firstSubmit = true;
     if (form.valid) {
-      this.passwordService.requestPasswordReset(form.value, (success) => {
+      this.passwordService.requestPasswordReset(form.value, (success, message) => {
         if (success) {
           this.router.navigate(['']);
+        } else {
+          this.showAlert = true;
+          this.alertMessage = message;
         }
       });
     }
+  }
+  closeAlert() {
+    this.alertMessage = '';
+    this.showAlert = false;
   }
 
 }

@@ -1,3 +1,5 @@
+import { NewPasswordComponent } from './password-reset/new-password/new-password.component';
+import { RequestResetComponent } from './password-reset/request-reset/request-reset.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,11 +15,13 @@ import {AuthGuardService} from './shared/auth-guard.service'
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService] },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
-  { path: 'register', component: RegisterComponent },
-  /*{ path: 'addnew', component: AddNewComponent },
-  { path: 'checkstatus', component: CheckStatusComponent },*/
+  { path: 'admin', component: AdminComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'register', component: RegisterComponent},
+  { path: 'addnew', component: AddNewComponent},
+  { path: 'checkstatus', component: CheckStatusComponent},
+  { path: 'request-password-reset', component: RequestResetComponent },
+  { path: 'set-new-password', component: NewPasswordComponent }
 ];
 
 

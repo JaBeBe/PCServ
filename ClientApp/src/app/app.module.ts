@@ -1,3 +1,5 @@
+import { RequestResetComponent } from './password-reset/request-reset/request-reset.component';
+import { NewPasswordComponent } from './password-reset/new-password/new-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -28,7 +30,9 @@ import { DataSharingService } from './shared/data-sharing.service';
     RegisterComponent,
     DashboardComponent,
     AddNewComponent,
-    CheckStatusComponent
+    CheckStatusComponent,
+    NewPasswordComponent,
+    RequestResetComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

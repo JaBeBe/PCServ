@@ -12,7 +12,7 @@ namespace PCServ.Services
         public bool Send(Mail mail);
     }
 
-    public class MailService
+    public class MailService : IMailService
     {
         private MailConfigHelper _mailConfigHelper;
 
@@ -28,15 +28,18 @@ namespace PCServ.Services
             message.To.Add(new MailboxAddress(mail.ToName, mail.ToMail));
             message.Subject = mail.Subject;
 
-            message.Body = new TextPart("plain")
+            var bodyBuilder = new BodyBuilder
             {
-                Text = mail.Body
+                HtmlBody = mail.HtmlBody,
+                TextBody = mail.Body
             };
+
+            message.Body = bodyBuilder.ToMessageBody();
 
             using (var client = new SmtpClient())
             {
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                client.Connect(_mailConfigHelper.SmtpAddr, _mailConfigHelper.SmtpPort, false);
+                client.Connect(_mailConfigHelper.SmtpAddr, _mailConfigHelper.SmtpPort);
                 client.Authenticate(_mailConfigHelper.Username, _mailConfigHelper.Password);
 
                 bool sent = false;

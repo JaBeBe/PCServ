@@ -28,10 +28,13 @@ namespace PCServ.Services
             message.To.Add(new MailboxAddress(mail.ToName, mail.ToMail));
             message.Subject = mail.Subject;
 
-            message.Body = new TextPart("plain")
+            var bodyBuilder = new BodyBuilder
             {
-                Text = mail.Body
+                HtmlBody = mail.HtmlBody,
+                TextBody = mail.Body
             };
+
+            message.Body = bodyBuilder.ToMessageBody();
 
             using (var client = new SmtpClient())
             {

@@ -1,3 +1,5 @@
+import { NewPasswordComponent } from './password-reset/new-password/new-password.component';
+import { RequestResetComponent } from './password-reset/request-reset/request-reset.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -15,10 +17,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'dashboard', component: DashboardComponent },
-  {path: 'register', component: RegisterComponent},
-  {path: 'addnew', component: AddNewComponent},
-  {path: 'checkstatus', component: CheckStatusComponent},
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent},
+  { path: 'addnew', component: AddNewComponent},
+  { path: 'checkstatus', component: CheckStatusComponent},
+  { path: 'request-password-reset', component: RequestResetComponent },
+  { path: 'set-new-password', component: NewPasswordComponent }
 ];
 
 

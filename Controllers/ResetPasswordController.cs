@@ -46,12 +46,17 @@ namespace PCServ.Controllers
 
             var user = await _userRepository.GetUserByEmailAsync(requestResetForm.EMail);
 
+            var userId = user.Id;
+
+            var url = $"{this.Request.Scheme}://{this.Request.Host}/set-new-password?userId={userId}&resetToken={token}";
+
             var mail = new Mail()
             {
                 ToMail = requestResetForm.EMail,
                 ToName = user.FirstName + " " + user.LastName,
                 Subject = "PCServ Password Reset",
-                Body = "Click <here> to reset password"
+                HtmlBody = $"Click <a href=\"{url}\">here</a> to reset password",
+                Body = $"Enter this url {url} to reset password",
             };
 
             var sentStatus = _mailService.Send(mail);

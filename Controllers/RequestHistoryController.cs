@@ -20,8 +20,10 @@ namespace PCServ.Controllers
             _reqHisRepo = repository;
         }
 
-        //GET RequestHistory/Get/int
+        //GET RequestHistory/Get/id:int
         [HttpGet]
+        [HttpDelete]
+        [Route("[action]/{id}")]
         public async Task<ActionResult> Get(int id) => Json(await _reqHisRepo.GetRequestHistoryAsync(id));
 
         //GET: RequestHistory/GetByClient/client
@@ -32,8 +34,9 @@ namespace PCServ.Controllers
         [HttpGet]
         public async Task<ActionResult> BrowseHistory(ServiceRequest request) => Json(await _reqHisRepo.Histories(request));
 
-        //POST: RequestHistory/Create/reqHistory
+        //POST: RequestHistory/Create + json z request history
         [HttpPost]
+        [Route("[action]")]
         public async Task<ActionResult>Create(RequestHistory request)
         {
             if(! await _reqHisRepo.Contains(request))
@@ -43,8 +46,9 @@ namespace PCServ.Controllers
             return Ok();
         }
 
-        //DELETE: RequestHistory/Delete/int
+        //DELETE: RequestHistory/Delete/id:int
         [HttpDelete]
+        [Route("[action]/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var request = await _reqHisRepo.GetRequestHistoryAsync(id);

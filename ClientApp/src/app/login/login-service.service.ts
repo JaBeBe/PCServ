@@ -13,6 +13,7 @@ export class LoginServiceService {
 
   private url = 'login';
   token: string;
+  name:string;
   tokenRole: string;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
@@ -20,6 +21,7 @@ export class LoginServiceService {
   authenticate(loginForm: LoginForm, callback: (n: boolean) => any) {
     this.http.post<User>(this.baseUrl + this.url, loginForm).subscribe(result => {
       callback(true);
+      console.log("Result: "+JSON.stringify(result));
       this.storeUserData(result);
     }, error => {
       console.error(error);

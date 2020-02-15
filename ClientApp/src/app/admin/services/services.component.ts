@@ -10,12 +10,12 @@ export class ServicesComponent implements OnInit {
 
   public services: services[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  /*constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<services[]>(baseUrl + 'RequestHistory/BrowseHistory/servRequest').subscribe(result => {
       this.services = result;
       console.log(result);
     }, error => console.error(error));
-  }
+  }*/
   
   ngOnInit() {
   }

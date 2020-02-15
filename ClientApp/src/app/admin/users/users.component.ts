@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpService } from 'src/app/shared/http.service';
 
 @Component({
   selector: 'app-users',
@@ -7,13 +7,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get(baseUrl + 'user/search/Nespire').subscribe(result => {
-      console.log("List of users: " + JSON.stringify(result));
-    }, error => console.error(error));
+  constructor(
+    private http: HttpService
+  ) {
   }
   ngOnInit() {
+    this.http.getUserByLogin("Nespire").subscribe(data=>{
+      console.log(data);
+    })
   }
+
+
 
 }

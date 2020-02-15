@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
+import { HttpService } from 'src/app/shared/http.service';
 
 @Component({
   selector: 'app-check-status',
@@ -9,12 +10,10 @@ import { NgForm, FormGroup, FormControl } from '@angular/forms';
 })
 export class CheckStatusComponent implements OnInit {
 
-  private url = 'ServiceRequest/Get/';
   formData: FormGroup;
   find: boolean = true;
   constructor(
-    private http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string
+    private get: HttpService
   ) { }
 
   ngOnInit() {
@@ -23,13 +22,12 @@ export class CheckStatusComponent implements OnInit {
     });
     console.log(this.find);
   }
-  showID() {
-  }
+
   showOrder() {
     console.log(this.formData.value.orderID);
-    return this.http.get(this.baseUrl + this.url + this.formData.value.orderID).subscribe(result => {
-      console.log(result);
-      this.find=true;
+    this.get.getRequestById(1).subscribe(data => {
+      console.log(data);
+      this.find = true;
     }, error => {
       this.find = false;
       console.error(error);

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import { DataSharingService } from '../shared/data-sharing.service';
 import {AuthRoleGuardService} from '../shared/auth-role-guard.service';
+import { HttpService } from '../shared/http.service';
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
@@ -20,7 +21,9 @@ export class NavMenuComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private dataSharingService: DataSharingService,
-    private authRole: AuthRoleGuardService
+    private authRole: AuthRoleGuardService,
+    private get: HttpService
+ 
   ) {
     this.dataSharingService.isAuthenticated.subscribe(value => {
       this.isAuthenticated = value;
@@ -33,9 +36,7 @@ export class NavMenuComponent implements OnInit {
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
-
     this.dataSharingService.isAuthenticated.next(false);
-
   }
 
   toggle() {
@@ -44,6 +45,6 @@ export class NavMenuComponent implements OnInit {
   ngOnInit() {
     this.isAuthenticated = this.authService.isAuthenticated();
     this.isAdmin = this.authRole.canActivate();
-
+    
   }
 }

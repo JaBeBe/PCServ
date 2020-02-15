@@ -22,7 +22,6 @@ namespace PCServ.Controllers
 
         //GET RequestHistory/Get/id:int
         [HttpGet]
-        [HttpDelete]
         [Route("[action]/{id}")]
         public async Task<ActionResult> Get(int id) => Json(await _reqHisRepo.GetRequestHistoryAsync(id));
 

@@ -34,18 +34,24 @@ namespace PCServ.Models.ServRequestRepo
         public async Task AddServiceRequestAsync(ServiceRequest request)
         {
             _ctx.ServReqs.Add(request);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
       
         public async Task UpdateServiceRequestAsync(ServiceRequest request)
         {
             _ctx.ServReqs.Update(request);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 
         public async Task DeleteServiceRequestAsync(ServiceRequest request)
         {
             _ctx.ServReqs.Remove(request);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 

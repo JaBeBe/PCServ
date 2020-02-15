@@ -26,18 +26,21 @@ namespace PCServ.Models.User
         public async Task AddUser(User user)
         {
             _ctx.Users.Add(user);
+            _ctx.SaveChanges();
             await Task.CompletedTask;
         }
 
         public async Task UpdateUser(User user)
         {
             _ctx.Users.Update(user);
+            _ctx.SaveChanges();
             await Task.CompletedTask;
         }
 
         public async Task DeleteUser(User user)
         {
            _ctx.Users.Remove(user);
+            _ctx.SaveChanges();
             await Task.CompletedTask;
         }
 

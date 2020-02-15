@@ -16,17 +16,9 @@ namespace PCServ.Models.ServRequestRepo
         public Product Stuff { get; set; }
         public User.User Client { get; set; }
 
-        private ServiceRequest()
+        public ServiceRequest()
         {
-
-        }
-        public ServiceRequest(string title, string description, Product product, User.User client)
-        {
-            Title = title;
-            Description = description;
-            Stuff = product;
-            Client = client;
-            CreateAt = DateTime.Now;            
-        }
+            CreateAt = DateTime.Now;
+        }      
     }
 }

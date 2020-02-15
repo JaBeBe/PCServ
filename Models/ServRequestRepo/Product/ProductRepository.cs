@@ -31,18 +31,24 @@ namespace PCServ.Models.ServRequestRepo
         public async Task AddProduct(Product product)
         {
             _ctx.Stuffs.Add(product);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 
         public async Task UpdateProduct(Product product)
         {
             _ctx.Stuffs.Update(product);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 
         public async Task DeleteProduct(Product product)
         {
             _ctx.Stuffs.Remove(product);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 

@@ -50,6 +50,8 @@ namespace PCServ.Models.ServRequestRepo
         public async Task DeleteServiceRequestAsync(ServiceRequest request)
         {
             _ctx.ServReqs.Remove(request);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 

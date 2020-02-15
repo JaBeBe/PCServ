@@ -45,6 +45,8 @@ namespace PCServ.Models.ServRequestRepo
         public async Task DeleteProduct(Product product)
         {
             _ctx.Stuffs.Remove(product);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 

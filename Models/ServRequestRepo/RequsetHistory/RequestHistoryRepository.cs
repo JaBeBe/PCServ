@@ -22,12 +22,16 @@ namespace PCServ.Models.ServRequestRepo
         public async Task AddRequestHistoryAsync(RequestHistory request)
         {
             _ctx.ReqHistory.Add(request);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 
         public async Task DeleteServiceRequestAsync(RequestHistory request)
         {
             _ctx.ReqHistory.Remove(request);
+            _ctx.SaveChanges();
+
             await Task.CompletedTask;
         }
 

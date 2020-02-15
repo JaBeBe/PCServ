@@ -16,16 +16,8 @@ namespace PCServ.Models.ServRequestRepo
 
         private RequestHistory()
         {
-
-        }
-
-        public RequestHistory(ServiceRequest request, User.User serviceMan, User.User client, string description)
-        {
-            Request = request;
-            ServiceMan = serviceMan;
-            Client = client;
-            Description = description;
             CreateAt = DateTime.Now;
-        }
+
+        }      
     }  
 }

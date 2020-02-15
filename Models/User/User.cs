@@ -18,20 +18,10 @@ namespace PCServ.Models.User
         [NotMapped]
         public string Token { get; set; }
 
-        private User()
+        public User()
         {
-
-        }
-
-        public User(string firstName, string lastName, string  login, string password, string mail)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Login = login;
-            EMail = mail;
-            Password = password;
             Role = UserRoleEnum.Client;
             CreateTime = DateTime.Now;
-        }
+        }    
     }
 }

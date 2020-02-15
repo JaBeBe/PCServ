@@ -2,6 +2,11 @@
   <div class="col-md-4 col-sm-6 col-xs-12 text-center">
     <h2>Login into PCServ</h2>
 
+    <div class="alert alert-danger text-left pb-3" *ngIf="showAlert">
+      Unable to login. Wrong login or password.
+      <button class="float-right btn btn-sm btn-link" (click)="closeAlert()">Close</button>
+    </div>
+
     <form id="loginFor" #form="ngForm" (ngSubmit)="formOnSumbit(form)">
 
       <div class="form-group">

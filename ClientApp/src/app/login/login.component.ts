@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   firstSubmit = false;
   tokenRole: any;
+  showAlert: boolean;
 
   constructor(
     private loginService: LoginServiceService,
@@ -21,9 +22,14 @@ export class LoginComponent implements OnInit {
     private dataSharingService: DataSharingService
   ) { }
   ngOnInit() {
+    this.showAlert = false;
   }
   refresh() {
 
+  }
+
+  closeAlert() {
+    this.showAlert = false;
   }
   formOnSumbit(form: NgForm) {
     this.firstSubmit = true;
@@ -33,6 +39,8 @@ export class LoginComponent implements OnInit {
           this.dataSharingService.isAuthenticated.next(true);
 
           this.router.navigate(['/dashboard']);
+        } else {
+          this.showAlert = true;
         }
       });
     }

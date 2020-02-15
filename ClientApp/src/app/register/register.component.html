@@ -4,34 +4,66 @@
 
     <form id="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
 
+      <div class="form-group">
+        <label class="center-block">Email:
+        </label>
+        <input class="form-control" formControlName="email" id="email" [formControl]="emailCtrl"
+          appForbiddenName="admin">
+        <div class="alert alert-danger" *ngIf="emailCtrl.invalid && submitted ">
+          email is required
+        </div>
+      </div>
 
+      <div class="form-group">
+        <label class="center-block">First Name:
+        </label>
+        <input class="form-control" formControlName="firstName" id="firstName" [formControl]="firstNameCtrl"
+          appForbiddenName="admin">
+        <div class="alert alert-danger" *ngIf="firstNameCtrl.invalid && submitted ">
+          first name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="center-block">Last Name:
+        </label>
+        <input class="form-control" formControlName="lastName" id="lastName" [formControl]="lastNameCtrl"
+          appForbiddenName="admin">
+        <div class="alert alert-danger" *ngIf="lastNameCtrl.invalid && submitted ">
+          last name is required
+        </div>
+      </div>
 
       <div class="form-group">
         <label class="center-block">Login:
         </label>
         <input class="form-control" formControlName="login" id="login" [formControl]="loginCtrl"
           appForbiddenName="admin">
-
-
-        <div class="alert alert-danger" *ngIf="loginCtrl.invalid && loginCtrl.dirty ">
-          username is required
+        <div class="alert alert-danger" *ngIf="loginCtrl.invalid && submitted ">
+          login is required
         </div>
-
-
-
       </div>
+
       <div class="form-group">
         <label class="center-block">Password:
         </label>
-        <input class="form-control" formControlName="password" id="password">
+        <input type="password" class="form-control" formControlName="password" id="password">
       </div>
-      <div class="alert alert-danger" *ngIf="passwordCtrl.invalid && passwordCtrl.dirty ">
-        username is required
+      <div class="alert alert-danger" *ngIf="passwordCtrl.invalid && submitted ">
+        password is required
       </div>
 
+      <div class="form-group">
+        <label class="center-block">Confirm Password:
+        </label>
+        <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword">
+      </div>
+      <div class="alert alert-danger" *ngIf="confirmPasswordCtrl.invalid && submitted ">
+        confirm password is required
+      </div>
 
-      <button type="submit" [disabled]="!contactForm.valid" class="btn btn-primary btn-block"
-        id="registerButton" (click)="routeToDashboard()">Save</button>
+      <button type="submit" class="btn btn-primary btn-block"
+        id="registerButton">Register</button>
     </form>
 
   </div>

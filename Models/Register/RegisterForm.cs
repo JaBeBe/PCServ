@@ -34,7 +34,15 @@ namespace PCServ.Models.Register
 
         public User.User CreateUser()
         {
-            return new User.User(FirstName, LastName, Login, PasswordHelper.Hash(Password), EMail);
+            //return new User.User(FirstName, LastName, Login, PasswordHelper.Hash(Password), EMail);
+            return new User.User()
+            {
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                Login = this.Login,
+                Password = PasswordHelper.Hash(this.Password),
+                EMail = this.EMail
+            };
         }
     }
 

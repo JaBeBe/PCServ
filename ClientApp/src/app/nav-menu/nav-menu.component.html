@@ -1,4 +1,4 @@
-<header>
+<div >
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">
@@ -12,17 +12,24 @@
           <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
-          <li class="nav-item pull-right" [routerLinkActive]="['link-active']">
+          <li class="nav-item pull-right" [routerLinkActive]="['link-active']" *ngIf="isAuthenticated">
+            <a class="nav-link text-dark" [routerLink]="['/dashboard']">Dashboard</a>
+          </li>
+          <li class="nav-item pull-right" [routerLinkActive]="['link-active']" *ngIf="isAuthenticated">
             <a class="nav-link text-dark" [routerLink]="['/admin']">Admin</a>
           </li>
-          <li class="nav-item pull-right" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
+ 
+          <li class="nav-item pull-right" [routerLinkActive]="['link-active']" *ngIf="!isAuthenticated">
+            <a class="nav-link text-dark" [routerLink]="['/login']" >Login</a>
           </li>
-          <li class="nav-item pull-right" [routerLinkActive]="['link-active']">
+          <li class="nav-item pull-right" [routerLinkActive]="['link-active']" *ngIf="!isAuthenticated">
             <a class="nav-link text-dark" [routerLink]="['/register']">Register</a>
+          </li>
+          <li class="nav-item pull-right" [routerLinkActive]="['link-active']" *ngIf="isAuthenticated" >
+            <a class="nav-link text-dark" [routerLink]="['/']" (click)="logout()">Logout</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-</header>
+</div>

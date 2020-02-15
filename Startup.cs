@@ -41,6 +41,9 @@ namespace PCServ
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettingsHelper>(appSettingsSection);
 
+            var mailConfigSection = Configuration.GetSection("MailConfig");
+            services.Configure<MailConfigHelper>(mailConfigSection);
+
             var appSettings = appSettingsSection.Get<AppSettingsHelper>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
             services.AddAuthentication(x =>
@@ -62,6 +65,7 @@ namespace PCServ
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMailService, MailService>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IServiceRequestRepository, ServiceRequestRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();

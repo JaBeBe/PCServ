@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PCServ.Migrations
 {
-    public partial class NewInitialMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Stuffs",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -19,7 +19,7 @@ namespace PCServ.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Stuffs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -34,7 +34,8 @@ namespace PCServ.Migrations
                     Login = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     Role = table.Column<int>(nullable: false),
-                    CreateTime = table.Column<DateTime>(nullable: false)
+                    CreateTime = table.Column<DateTime>(nullable: false),
+                    PasswordResetToken = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -63,9 +64,9 @@ namespace PCServ.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ServReqs_Product_StuffId",
+                        name: "FK_ServReqs_Stuffs_StuffId",
                         column: x => x.StuffId,
-                        principalTable: "Product",
+                        principalTable: "Stuffs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -101,6 +102,41 @@ namespace PCServ.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ReqHistory",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RequestId = table.Column<int>(nullable: true),
+                    ServiceManId = table.Column<int>(nullable: true),
+                    ClientId = table.Column<int>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    CreateAt = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReqHistory", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ReqHistory_Users_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ReqHistory_ServReqs_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "ServReqs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ReqHistory_Users_ServiceManId",
+                        column: x => x.ServiceManId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TicketStatusChange",
                 columns: table => new
                 {
@@ -128,6 +164,21 @@ namespace PCServ.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReqHistory_ClientId",
+                table: "ReqHistory",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReqHistory_RequestId",
+                table: "ReqHistory",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReqHistory_ServiceManId",
+                table: "ReqHistory",
+                column: "ServiceManId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ServReqs_ClientId",
@@ -163,16 +214,19 @@ namespace PCServ.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ServReqs");
+                name: "ReqHistory");
 
             migrationBuilder.DropTable(
                 name: "TicketStatusChange");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "ServReqs");
 
             migrationBuilder.DropTable(
                 name: "Tickets");
+
+            migrationBuilder.DropTable(
+                name: "Stuffs");
 
             migrationBuilder.DropTable(
                 name: "Users");

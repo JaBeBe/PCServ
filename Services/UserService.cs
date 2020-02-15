@@ -11,6 +11,7 @@ using PCServ.Context;
 using PCServ.Helpers;
 using PCServ.Models.Login;
 using PCServ.Models.Register;
+using PCServ.Models.ResetPassword;
 using PCServ.Models.User;
 
 namespace PCServ.Services
@@ -19,6 +20,8 @@ namespace PCServ.Services
     {
         Task<User> LoginUser(LoginForm loginForm);
         Task<int> RegisterUser(RegisterForm registerForm);
+        Task<bool> CheckIfCanResetPassword(int userId, string resetToken);
+        Task<string> GeneratePasswordResetToken(RequestResetForm requestResetForm);
     }
 
     public class UserService : IUserService
@@ -74,6 +77,32 @@ namespace PCServ.Services
 
             return await _appDbContext.SaveChangesAsync();
 
+        }
+
+        public async Task<bool> CheckIfCanResetPassword(int userId, string resetToken)
+        {
+            return await _appDbContext.Users.Where(u => u.Id == userId && u.PasswordResetToken == resetToken).AnyAsync();
+        }
+
+        public async Task<string> GeneratePasswordResetToken(RequestResetForm requestResetForm)
+        {
+            var token = TokenHelper.Generate(5, 100);
+
+            var user = await _appDbContext.Users.Where(u => u.EMail == requestResetForm.EMail).FirstOrDefaultAsync();
+
+
+            if(user == null)
+            {
+                return null;
+            }
+
+            user.PasswordResetToken = token;
+
+            _appDbContext.Users.Update(user);
+
+            await _appDbContext.SaveChangesAsync();
+
+            return token;
         }
     }
 }

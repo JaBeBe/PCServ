@@ -1,4 +1,5 @@
-﻿using PCServ.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using PCServ.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,5 +45,9 @@ namespace PCServ.Models.User
             await Task.CompletedTask;
         }
 
+        public Task<User> GetUserByEmailAsync(string EMail)
+        {
+            return _ctx.Users.Where(u => u.EMail == EMail).FirstOrDefaultAsync();
+        }
     }
 }

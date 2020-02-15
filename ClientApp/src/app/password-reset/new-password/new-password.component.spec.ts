@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddServiceRequestComponent } from './add-service-request.component';
+import { NewPasswordComponent } from './new-password.component';
 
-describe('AddServiceRequestComponent', () => {
-  let component: AddServiceRequestComponent;
-  let fixture: ComponentFixture<AddServiceRequestComponent>;
+describe('NewPasswordComponent', () => {
+  let component: NewPasswordComponent;
+  let fixture: ComponentFixture<NewPasswordComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddServiceRequestComponent ]
+      declarations: [ NewPasswordComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddServiceRequestComponent);
+    fixture = TestBed.createComponent(NewPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

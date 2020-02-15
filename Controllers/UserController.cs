@@ -21,9 +21,10 @@ namespace PCServ.Controllers
         {
             _userRepo = userRepo;
         }
-        // GET: User/Get/int
-        [HttpGet("{id}")]
+        // GET: User/Get/id:int
+        [HttpGet]
         [AuthorizeRoles(UserRoleEnum.Administrator, UserRoleEnum.Technician)]
+        [Route("[action]/{id}")]
         public async Task<ActionResult> Get(int id)
         {
             var user = await _userRepo.GetUserAsync(id);
@@ -31,8 +32,9 @@ namespace PCServ.Controllers
             return Json(userDTO);
         }
 
-        //GET: User/Search/string
+        //GET: User/Search/login:string
        [HttpGet]
+       [Route("[action]/{login}")]
         public async Task<ActionResult> Search(string login)
         {
             var user = await _userRepo.GetUserAsync(login);
@@ -40,8 +42,9 @@ namespace PCServ.Controllers
             return Json(userDTO);
         }
 
-        // POST: User/Create/user
+        // POST: User/Create + json User w body
         [HttpPost]
+        [Route("[action]")]
         public async Task<ActionResult> Create([FromBody]User user)
         {
             if (!await _userRepo.Contains(user))
@@ -51,8 +54,9 @@ namespace PCServ.Controllers
             return Ok();
         }
      
-        // PATCH: User/Edit/user
-        [HttpPatch]
+        // PATCH: User/Edit + json User w body
+        [HttpPut]
+        [Route("[action]")]
         public async Task<ActionResult> Edit([FromBody]User user)
         {
             if (!await _userRepo.Contains(user))
@@ -62,8 +66,9 @@ namespace PCServ.Controllers
             return Ok();
         }
        
-        // DELETE: User/Delete/login
+        // DELETE: User/Delete/login:string
         [HttpDelete]
+        [Route("DeleteByLogin/{login}")]
         public async Task<ActionResult> Delete(string login)
         {
             var user = await _userRepo.GetUserAsync(login);
@@ -74,8 +79,9 @@ namespace PCServ.Controllers
             return Ok();
         }
 
-        // DELETE: User/Delete/id
+        // DELETE: User/Delete/id:int
         [HttpDelete]
+        [Route("[action]/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var user = await _userRepo.GetUserAsync(id);

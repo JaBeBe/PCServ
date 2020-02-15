@@ -24,9 +24,9 @@ namespace PCServTests
         }
         [Test]
         [Obsolete]
-        public void registerForm_sendOnly_ValidateForm()
+        public void RegisterForm_sendOnly_ValidateForm()
         {
-            _driver.Navigate().GoToUrl("https://localhost:5001");
+            _driver.Navigate().GoToUrl("https://localhost:44399");
             _driver.Manage().Window.Maximize();
 
             var register_link = _driver.FindElement(By.CssSelector("[href='/register']"));
@@ -57,13 +57,13 @@ namespace PCServTests
 
 
         }
-
+        /*
         [TearDown]
         public void CloseBrowser()
         {
             _driver.Close();
         }
-
+        */
     }
     
 }

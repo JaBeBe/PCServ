@@ -9,7 +9,7 @@
       <div class="form-group">
         <label class="center-block">Login:
         </label>
-        <input class="form-control" formControlName="login" id="login" minlength="2" [formControl]="loginCtrl"
+        <input class="form-control" formControlName="login" id="login" [formControl]="loginCtrl"
           appForbiddenName="admin">
 
 
@@ -23,8 +23,7 @@
       <div class="form-group">
         <label class="center-block">Password:
         </label>
-        <input class="form-control" formControlName="password" id="password" minlength="2"
-          placeholder="Minimum 2 signs">
+        <input class="form-control" formControlName="password" id="password">
       </div>
       <div class="alert alert-danger" *ngIf="passwordCtrl.invalid && passwordCtrl.dirty ">
         username is required

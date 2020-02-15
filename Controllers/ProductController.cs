@@ -21,20 +21,24 @@ namespace PCServ.Controllers
         }
 
         
-        // GET: Product/Get/int
+        // GET: Product/Get/id:int
         [HttpGet]
+        [Route("[action]/{id}")]
         public async Task<ActionResult> Get(int id) => await Task.FromResult(Json(_productRepo.GetProduct(id)));
 
-        //GET: Product/Search/string
+        //GET: Product/Search/serialNo:string
         [HttpGet]
+        [Route("[action]/{serialNo}")]
         public async Task<ActionResult> Search(string serialNo) => await Task.FromResult(Json(_productRepo.GetProduct(serialNo)));
 
-        //GET: Product/Browse/string
+        //GET: Product/Browse/name:string
         [HttpGet]
+        [Route("[action]/{name}")]
         public async Task<ActionResult> Browse(string name) => await Task.FromResult(Json(_productRepo.BrowseProduct(name)));
 
-        // POST: Product/Create/product
-        [HttpPost]        
+        // POST: Product/Create + json z product
+        [HttpPost]
+        [Route("[action]")]
         public async Task<ActionResult> Create([FromBody]Product product)
         {
            if(!await _productRepo.Contains(product))
@@ -44,8 +48,9 @@ namespace PCServ.Controllers
             return Ok();
         }
 
-        // POST: Product/Edit/product
-        [HttpPatch]
+        // POST: Product/Edit + json z product
+        [HttpPut]
+        [Route("[action]")]
         public async Task<ActionResult> Edit([FromBody]Product product)
         {
             if(!await _productRepo.Contains(product))
@@ -55,8 +60,9 @@ namespace PCServ.Controllers
             return Ok();
         }
 
-        // DELETE: Product/Delete/int
+        // DELETE: Product/Delet/id:int
         [HttpDelete]
+        [Route("[action]/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var product = await _productRepo.GetProduct(id);
@@ -66,8 +72,9 @@ namespace PCServ.Controllers
             }
             return Ok();
         }
-        // DELETE: Product/Delete/string
+        // DELETE: Product/Delete/serialNo:string
         [HttpDelete]
+        [Route("[action]/{serialNo}")]
         public async Task<ActionResult> Delete(string serialNo)
         {
             var product = await _productRepo.GetProduct(serialNo);

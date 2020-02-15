@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../user/user';
 import { Observable } from 'rxjs';
 import { resolve } from 'url';
+import * as jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,7 @@ import { resolve } from 'url';
 export class LoginServiceService {
 
   private url = 'login';
-  navItems: any;
-
+  token: string;
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   authenticate(loginForm: LoginForm, callback: (n: boolean) => any) {
@@ -25,17 +25,16 @@ export class LoginServiceService {
       callback(false);
     });
   }
-
   storeUserData(user: User): void {
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user.token));
+    this.token = localStorage.getItem('user');
+    const decoded = jwt_decode(this.token);
+    console.log("Decoted: "+JSON.stringify(decoded));
   }
+  
 
   getUserData(): User {
     return JSON.parse(localStorage.getItem('user'));
   }
 
-  // Only for unit test
-  isLoggedIn() {
-    return true;
-  }
 }

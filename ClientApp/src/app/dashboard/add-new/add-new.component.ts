@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/user/user';
 
 @Component({
@@ -10,9 +10,9 @@ import { User } from 'src/app/user/user';
 })
 export class AddNewComponent implements OnInit {
 
-  private url = 'ServiceRequest/Create/request';
+  private url = 'serviceRequest/create';
   formDataAdd: FormGroup;
-  send: boolean = true;
+  send: boolean=true;
   constructor(
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string
@@ -25,14 +25,29 @@ export class AddNewComponent implements OnInit {
     });
   }
   formToSend = JSON.stringify(this.formDataAdd);
-  sendOrder() {
-    return this.http.post(this.baseUrl + this.url, this.formToSend).subscribe(result => {
-      console.log(result);
-      this.send = true;
-    }, error => {
+  sendOrder(service: newService) {
+    service["Id"] = 4;
+    service["CreateAt"] ="2012-04-30T02:15:12.356Z";
+    service["StuffId"] = 4;
+    service["ClientId"] = 4;
+    console.log(Date.now());
 
-      console.log(error);
-      this.send = false;
-    });
+    console.log(service);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.http.post(this.baseUrl + 'requestHistory/create', service).subscribe(
+      status=> console.log(JSON.stringify(status)
+      ));
+
   }
+  
 }
+export interface newService {
+  Id:number;
+  Title: string;
+  CreateAt: string;
+  Description: string;
+  StuffId: number;
+  ClientId: number;
+}
+

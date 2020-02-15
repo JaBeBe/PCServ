@@ -19,7 +19,7 @@ export class AuthService {
   public isAuthenticated(){
     this.token = localStorage.getItem('user');
     const decoded = jwtDecode(this.token);
-
+    
     let o = new Date(Date.now() * 1000);
     let d = new Date(decoded.exp * 1000);
     if (o >= d) {

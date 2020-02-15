@@ -42,7 +42,6 @@ namespace PCServ.Controllers
 
         // POST: ServiceRequest/Create + json z servicerequest
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [Route("[action]")]
         public async Task<ActionResult> Create([FromBody]ServiceRequest request)
         {

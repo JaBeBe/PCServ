@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../shared/data-sharing.service'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
   firstSubmit = false;
+  tokenRole: any;
 
   constructor(
     private loginService: LoginServiceService,

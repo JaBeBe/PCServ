@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { AddNewComponent } from './dashboard/add-new/add-new.component';
 import { CheckStatusComponent } from './dashboard/check-status/check-status.component'
 import { DataSharingService } from './shared/data-sharing.service';
+import { StuffComponent } from './admin/stuff/stuff.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { DataSharingService } from './shared/data-sharing.service';
     AddNewComponent,
     CheckStatusComponent,
     NewPasswordComponent,
-    RequestResetComponent
+    RequestResetComponent,
+    StuffComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

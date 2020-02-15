@@ -11,7 +11,6 @@ using PCServ.Models.User;
 
 namespace PCServ.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UserController : Controller
@@ -23,7 +22,6 @@ namespace PCServ.Controllers
         }
         // GET: User/Get/id:int
         [HttpGet]
-        [AuthorizeRoles(UserRoleEnum.Administrator, UserRoleEnum.Technician)]
         [Route("[action]/{id}")]
         public async Task<ActionResult> Get(int id)
         {

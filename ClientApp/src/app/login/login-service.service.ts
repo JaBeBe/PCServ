@@ -13,11 +13,12 @@ export class LoginServiceService {
 
   private url = 'login';
   token: string;
+  tokenRole: string;
+
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   authenticate(loginForm: LoginForm, callback: (n: boolean) => any) {
     this.http.post<User>(this.baseUrl + this.url, loginForm).subscribe(result => {
-      console.log(result);
       callback(true);
       this.storeUserData(result);
     }, error => {
@@ -27,11 +28,13 @@ export class LoginServiceService {
   }
   storeUserData(user: User): void {
     localStorage.setItem('user', JSON.stringify(user.token));
+
     this.token = localStorage.getItem('user');
     const decoded = jwt_decode(this.token);
-    console.log("Decoted: "+JSON.stringify(decoded));
+    console.log("Decoted role: " + JSON.stringify(decoded.role));
+
   }
-  
+
 
   getUserData(): User {
     return JSON.parse(localStorage.getItem('user'));

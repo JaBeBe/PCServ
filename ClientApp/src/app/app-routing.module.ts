@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { AddNewComponent } from './dashboard/add-new/add-new.component';
 import { CheckStatusComponent } from './dashboard/check-status/check-status.component';
 import { AuthGuardService } from './shared/auth-guard.service'
+import { AuthRoleGuardService } from './shared/auth-role-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },

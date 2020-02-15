@@ -8,25 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersComponent implements OnInit {
 
-  public users: users[];
-
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<users[]>(baseUrl + 'users').subscribe(result => {
-      this.users = result;
-      console.log(result);
+    http.get(baseUrl + 'user/search/Nespire').subscribe(result => {
+      console.log("List of users: " + JSON.stringify(result));
     }, error => console.error(error));
   }
   ngOnInit() {
   }
 
-}
-
-interface users{
-  Id: number,
-  FirstName: string,
-  LastName: string,
-  Login: string,
-  Password: string,
-  Role: string,
-  CreateTime: string
 }

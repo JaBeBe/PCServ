@@ -40,6 +40,7 @@ namespace PCServ.Models.User
         public async Task DeleteUser(User user)
         {
            _ctx.Users.Remove(user);
+
             await Task.CompletedTask;
         }
 

@@ -24,10 +24,10 @@ export class CheckStatusComponent implements OnInit {
     console.log(this.find);
   }
   showID() {
-    console.log(this.formData.value.orderID);
   }
   showOrder() {
-    return this.http.get(this.baseUrl + this.url + this.formData.value.orderIDds).subscribe(result => {
+    console.log(this.formData.value.orderID);
+    return this.http.get(this.baseUrl + this.url + this.formData.value.orderID).subscribe(result => {
       console.log(result);
       this.find=true;
     }, error => {

@@ -32,8 +32,8 @@ export class AddNewComponent implements OnInit {
 
     service["Id"];
     service["CreateAt"];
-    service["StuffId"] = 4;
-    service["ClientId"] = 4;
+    service["StuffId"] ;
+    service["ClientId"] ;
 
     console.log(service);
     this.http.postRequest(service).subscribe(data=>{

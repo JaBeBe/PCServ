@@ -35,7 +35,7 @@ export class HttpService {
   }
 
   getRequestById(requestId: number) {
-    return this.http.get(this.baseUrl + 'RequestHistory/Get/' + requestId)
+    return this.http.get(this.baseUrl + 'ServiceRequest/get/' + requestId)
   }
 
   getRequestByClient(client: string) {
